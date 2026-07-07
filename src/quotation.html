@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>TheTeam — عرض سعر NI Ceramics</title>
+<style>
+  @font-face{font-family:'Almarai';src:local('Almarai');font-weight:300}
+  :root{
+    --ink:#1b1b22; --body:#3a3c44; --muted:#8a8c95; --line:#e7e5df;
+    --card:#faf9f6; --bg:#ffffff;
+    --blue:#0a3a9e; --blue2:#2756c9;
+    --mag:#8e1a7d; --mag2:#b0248f; --purple:#6d1a6d;
+    --green:#0a7a0a; --orange:#d9650a;
+    --soft:#f7f4f8;
+  }
+  @page{size:A4;margin:0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{font-family:'Almarai','Rubik',system-ui,sans-serif;color:var(--body);font-size:13px;line-height:1.7}
+  body{background:var(--bg)}
+  .page{width:210mm;height:297mm;padding:16mm 15mm 14mm;margin:0 auto;background:var(--bg);position:relative;overflow:hidden;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  .lat{font-family:'Rubik','Almarai',sans-serif}
+  h1,h2,h3,h4{color:var(--ink);font-weight:800;line-height:1.3}
+
+  /* ===== header ===== */
+  .top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--line);padding-bottom:14px}
+  .title-wrap .kicker{font-size:34px;font-weight:800;letter-spacing:-.5px;
+    background:linear-gradient(90deg,var(--purple),var(--mag2));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .title-wrap .meta{margin-top:9px;font-size:11.5px;color:var(--muted)}
+  .title-wrap .meta b{color:var(--body);font-weight:700}
+  .title-wrap .valid{margin-top:3px;font-size:11px;color:var(--mag)}
+
+  /* logo */
+  .brand{display:flex;align-items:center;gap:10px}
+  .mark{display:grid;grid-template-columns:repeat(2,15px);grid-template-rows:repeat(2,15px);gap:3px}
+  .mark span{border-radius:4px;display:block}
+  .mark .c1{background:var(--mag)}.mark .c2{background:var(--purple)}
+  .mark .c3{background:var(--blue)}.mark .c4{background:var(--green)}
+  .wordmark{line-height:1;text-align:left}
+  .wordmark .the{font-size:12px;color:var(--muted);font-weight:600}
+  .wordmark .team{font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+
+  /* ===== parties ===== */
+  .parties{display:flex;gap:12px;margin-top:16px}
+  .party{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .party .lbl{font-size:10.5px;font-weight:800;color:var(--mag);letter-spacing:.5px;margin-bottom:5px}
+  .party .nm{font-size:15px;font-weight:800;color:var(--ink)}
+  .party .nm .lat{font-weight:700}
+  .party .sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.6}
+
+  /* ===== section ===== */
+  .sec{margin-top:20px}
+  .sec-h{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .sec-h .dash{width:26px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--mag),var(--orange))}
+  .sec-h h3{font-size:14.5px}
+  .sec-h .en{font-size:10.5px;color:var(--muted);font-weight:600;letter-spacing:.5px}
+  .lead{font-size:12.5px;color:var(--body);margin-bottom:2px}
+
+  /* project line */
+  .project{background:var(--soft);border:1px solid #ecdcea;border-radius:10px;padding:11px 14px;font-size:13px}
+  .project b{color:var(--purple)}
+
+  /* ===== why cards ===== */
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .why .cell{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+  .why .cell .t{font-size:12px;font-weight:800;color:var(--ink);margin-bottom:3px;display:flex;align-items:center;gap:6px}
+  .why .cell .t .ic{width:7px;height:7px;border-radius:2px;background:var(--mag);flex:0 0 auto}
+  .why .cell.b .t .ic{background:var(--blue)} .why .cell.g .t .ic{background:var(--green)} .why .cell.o .t .ic{background:var(--orange)}
+  .why .cell p{font-size:11px;color:var(--body);line-height:1.65}
+  .why .full{grid-column:1 / -1}
+
+  /* ===== scope table ===== */
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  .scope th{background:var(--ink);color:#fff;font-weight:700;font-size:11.5px;padding:9px 12px;text-align:right}
+  .scope th:first-child{border-radius:0 8px 0 0;width:34px;text-align:center}
+  .scope th:last-child{border-radius:8px 0 0 0;width:78px;text-align:center}
+  .scope td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .scope tr:last-child td{border-bottom:none}
+  .scope td.num{text-align:center;color:var(--muted);font-weight:700;font-family:'Rubik'}
+  .scope td .sysname{font-weight:800;color:var(--ink);font-size:12.5px}
+  .scope td .sysname .lat{color:var(--blue)}
+  .scope td .desc{font-size:11px;color:var(--body);margin-top:3px;line-height:1.6}
+  .scope td.st{text-align:center}
+  .pill{display:inline-block;background:#eaf5ea;color:var(--green);font-weight:800;font-size:10.5px;padding:3px 10px;border-radius:20px}
+
+  /* ===== pricing ===== */
+  .price-grid{display:flex;gap:12px;margin-top:6px}
+  .price-main{flex:1.4;background:linear-gradient(135deg,#2a0f28,#5a1550);color:#fff;border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+  .price-main .rows{font-size:12.5px}
+  .price-main .r{display:flex;justify-content:space-between;padding:4px 0;color:#e9d9e6}
+  .price-main .r.disc{color:#ffcaf0}
+  .price-main .r .lat{font-weight:700}
+  .price-main hr{border:none;border-top:1px solid rgba(255,255,255,.22);margin:7px 0}
+  .price-main .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:2px}
+  .price-main .total .k{font-size:13px;font-weight:800;color:#fff}
+  .price-main .total .v{font-size:26px;font-weight:800;color:#ffd9f4;font-family:'Rubik'}
+  .price-main .note{font-size:10px;color:#d9b9d4;margin-top:6px}
+  .price-side{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
+  .price-side .k{font-size:11px;color:var(--muted);font-weight:700}
+  .price-side .v{font-size:22px;font-weight:800;color:var(--ink);font-family:'Rubik';margin-top:2px}
+  .price-side .u{font-size:11px;color:var(--body)}
+  .price-side .ex{font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+  /* payments */
+  .pay{width:100%;margin-top:10px;font-size:12px}
+  .pay th{background:var(--soft);color:var(--ink);font-weight:800;font-size:11.5px;padding:8px 12px;border-bottom:2px solid #ecdcea}
+  .pay td{padding:8px 12px;border-bottom:1px solid var(--line)}
+  .pay .amt{font-family:'Rubik';font-weight:700;text-align:left;color:var(--ink)}
+  .pay tr.tot td{background:#fbf6fa;font-weight:800;color:var(--ink);border-bottom:none}
+  .pay tr.tot .amt{color:var(--mag)}
+  .pay th:last-child,.pay td:last-child{text-align:left}
+
+  /* ===== maintenance ===== */
+  .amc-head{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0a3a9e,#2756c9);color:#fff;border-radius:12px 12px 0 0;padding:12px 16px}
+  .amc-head .l .t{font-size:13.5px;font-weight:800;color:#fff}
+  .amc-head .l .s{font-size:10.5px;color:#cdd9f3;margin-top:2px}
+  .amc-head .r{text-align:left}
+  .amc-head .r .v{font-size:22px;font-weight:800;font-family:'Rubik';color:#fff;line-height:1}
+  .amc-head .r .u{font-size:10px;color:#cdd9f3}
+  .amc-body{border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:13px 15px}
+  .amc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .amc-item{display:flex;gap:9px;align-items:flex-start}
+  .amc-item .ico{flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .amc-item.i1 .ico{background:#e9eefb;color:var(--blue)}
+  .amc-item.i2 .ico{background:#eaf5ea;color:var(--green)}
+  .amc-item.i3 .ico{background:#fbeaf6;color:var(--mag)}
+  .amc-item.i4 .ico{background:#fdeede;color:var(--orange)}
+  .amc-item .tx .t{font-size:11.5px;font-weight:800;color:var(--ink)}
+  .amc-item .tx .t .lat{font-size:10px;color:var(--muted);font-weight:600}
+  .amc-item .tx p{font-size:10.5px;color:var(--body);line-height:1.55;margin-top:1px}
+  .amc-why{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:10.5px;color:var(--muted);line-height:1.6}
+  .amc-why b{color:var(--body);font-weight:700}
+
+  /* excluded */
+  .exc{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .exc .chip{border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:11px;color:var(--body);background:#fff}
+  .exc .chip b{color:var(--ink)}
+  .exc-note{font-size:10.5px;color:var(--muted);margin-top:7px}
+
+  /* terms */
+  .terms{columns:2;column-gap:20px;font-size:11px;color:var(--body)}
+  .terms li{margin-bottom:6px;list-style:none;position:relative;padding-right:14px;break-inside:avoid}
+  .terms li::before{content:"•";position:absolute;right:0;color:var(--mag);font-weight:800}
+
+  /* footer */
+  .foot{position:absolute;bottom:9mm;left:15mm;right:15mm;border-top:1px solid var(--line);padding-top:7px;
+    display:flex;justify-content:center;gap:8px;font-size:10px;color:var(--muted)}
+  .foot .lat{font-family:'Rubik'}
+
+  /* page 2 */
+  .bank{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-top:6px}
+  .bank .lbl{font-size:11px;font-weight:800;color:var(--mag);margin-bottom:5px}
+  .bank .co{font-size:13px;font-weight:800;color:var(--ink)}
+  .bank .co-en{font-size:11px;color:var(--muted);font-family:'Rubik'}
+  .bank .iban{font-size:13px;font-family:'Rubik';font-weight:700;color:var(--ink);margin-top:7px;letter-spacing:.5px}
+  .bank .draft{font-size:10.5px;color:var(--muted);margin-top:9px;padding-top:8px;border-top:1px dashed var(--line)}
+  .sign{display:flex;gap:40px;margin-top:60px}
+  .sign .box{flex:1;text-align:center}
+  .sign .line{border-top:1.5px solid var(--ink);padding-top:8px;font-size:11.5px;color:var(--body);font-weight:700}
+  .accept{margin-top:26px;background:var(--soft);border:1px solid #ecdcea;border-radius:12px;padding:14px 18px;font-size:11.5px;color:var(--body);line-height:1.7}
+  .accept b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page">
+  <div class="top">
+    <div class="title-wrap">
+      <div class="kicker">عرض سعر</div>
+      <div class="meta"><b>المرجع:</b> <span class="lat">TTM-NICE-001</span> &nbsp;|&nbsp; <b>التاريخ:</b> 2 يوليو 2026</div>
+      <div class="valid">صالح حتى 12 يوليو 2026 (10 أيام)</div>
+    </div>
+    <div class="brand">
+      <div class="mark"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span></div>
+      <div class="wordmark"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+
+  <div class="parties">
+    <div class="party">
+      <div class="lbl">مُقدَّم من</div>
+      <div class="nm">TheTeam</div>
+      <div class="sub">الكويت · تأسست 2017 · <span class="lat">theteamkw.com</span><br>شريك برمجيات متكامل — نُصمّم ونبني ونُشغّل.</div>
+    </div>
+    <div class="party">
+      <div class="lbl">مُقدَّم إلى</div>
+      <div class="nm">الصناعات الوطنية للسيراميك <span class="lat">NI Ceramics</span></div>
+      <div class="sub">قطاع صناعي · تصنيع السيراميك والبورسلين · الكويت</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="project"><b>المشروع:</b> الموقع الإلكتروني، نظام إدارة المحتوى (CMS)، وموصّل الذكاء الاصطناعي (AI MCP).</div>
+  </div>
+
+  <!-- NEW: meeting-backed value section -->
+  <div class="sec">
+    <div class="sec-h"><span class="dash"></span><h3>خلفية المشروع — ما ناقشناه وما نبنيه</h3></div>
+    <div class="lead" style="margin-bottom:10px;color:var(--muted);font-size:11.5px">خلاصة اجتماعنا معكم، وكيف يعالج نطاق العمل أدناه كل نقطة طُرحت.</div>
+    <div class="why">
+      <div class="cell b">
+        <div class="t"><span class="ic"></span>الوضع الحالي: نظام مقفل</div>
+        <p>نظامكم الحالي كتلة واحدة — أي تعديل في الواجهة يمسّ النواة، وإدارة الـIT عنق زجاجة يبطّئ أي تغيير.</p>
+      </div>
+      <div class="cell">
+        <div class="t"><span class="ic"></span>الحل: فصل الواجهة عن النواة</div>
+        <p>نعيد البناء بطبقتين (واجهة <span class="lat">React</span> + نواة مستقلة)، فتُعدّلون التصميم والمحتوى بحرّية دون لمس النواة، وتنخفض كلفة أي تغيير لاحق.</p>
+      </div>
+      <div class="cell g">
+        <div class="t"><span class="ic"></span>التحكم بلا مطوّر</div>
+        <p>لوحة تحكم كاملة بصلاحيات تُدير الصفحات والمنتجات والصور والأخبار — تُنهي المركزية الزائدة وتوزّع العمل على الفريق.</p>
+      </div>
+      <div class="cell o">
+        <div class="t"><span class="ic"></span>ميزة لا يملكها المنافس</div>
+        <p>كتالوج فخم بلا بيع مباشر + أداة ذكاء اصطناعي ترفع مخطط البيت (<span class="lat">PDF</span>) وتحسب الكميات والتكلفة تلقائياً.</p>
+      </div>
+      <div class="cell full">
+        <div class="t"><span class="ic" style="background:var(--purple)"></span>المنهجية: التصميم أولاً، ثم بناء متدرّج</div>
+        <p>بدأنا بالتصميم واتّفقنا على الاتجاه البصري (٣ هويّات جاهزة للاختيار)، ثم نبني بنطاق مركّز يتوسّع تدريجياً — كما اتُّفق في الاجتماع، لضبط الجودة والتكلفة.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="lat">theteamkw.com</span><span>·</span><span class="lat">info@theteamkw.com</span><span>·</span><span class="lat">+965 5008008</span><span>·</span><span>Kuwait</span>
+  </div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page">
+  <!-- scope -->
+  <div class="sec" style="margin-top:0">
+    <div class="sec-h"><span class="dash"></span><h3>نطاق العمل — المُخرَجات</h3></div>
+    <table class="scope">
+      <thead><tr><th>#</th><th>النظام / الوحدة</th><th>الحالة</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td><div class="sysname">الموقع الإلكتروني <span class="lat">· Website</span></div>
+              <div class="desc">موقع تعريفي وتجاري ثنائي اللغة يعرض منتجات السيراميك والبورسلين والمجموعات، قابل للتهيئة بالكامل من قِبل الفريق (المحتوى، الصور، الألوان).</div></td>
+          <td class="st"><span class="pill">مشمول</span></td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td><div class="sysname">نظام إدارة المحتوى <span class="lat">· CMS</span></div>
+              <div class="desc">لوحة تحكم كاملة — إدارة الصفحات والمنتجات والصور والأقسام والأخبار دون الحاجة إلى مطوّر.</div></td>
+          <td class="st"><span class="pill">مشمول</span></td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td><div class="sysname">موصّل الذكاء الاصطناعي <span class="lat">· AI MCP Connector</span></div>
+              <div class="desc">مساعد ذكاء اصطناعي + موصّل <span class="lat">MCP</span> لتشغيل النظام والاستعلام عنه (محكوم بالصلاحيات وموثّق).</div></td>
+          <td class="st"><span class="pill">مشمول</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- pricing -->
+  <div class="sec">
+    <div class="sec-h"><span class="dash"></span><h3>الاستثمار</h3><span class="en">— بناء كامل للأنظمة الثلاثة</span></div>
+    <div class="price-grid">
+      <div class="price-main">
+        <div class="rows">
+          <div class="r"><span>الموقع الإلكتروني</span><span class="lat">مشمول</span></div>
+          <div class="r"><span>نظام إدارة المحتوى (CMS)</span><span class="lat">مشمول</span></div>
+          <div class="r"><span>موصّل الذكاء الاصطناعي (AI MCP)</span><span class="lat">مشمول</span></div>
+        </div>
+        <hr>
+        <div class="total"><span class="k">إجمالي تكلفة المشروع</span><span class="v">3,250<span style="font-size:13px"> د.ك</span></span></div>
+        <div class="note">دفعة واحدة على مرحلتين — بناء كامل للأنظمة الثلاثة أعلاه.</div>
+      </div>
+      <div class="price-side">
+        <div class="k">الصيانة السنوية (AMC)</div>
+        <div class="v">455<span class="u"> د.ك / سنة</span></div>
+        <div class="u" style="color:var(--muted);font-size:10.5px">14% من قيمة المشروع — تُحتسب سنوياً بعد التسليم (مفصّلة أدناه).</div>
+        <div class="ex">مُستثنى ويدفعه العميل بالتكلفة الفعلية: الذكاء الاصطناعي · الرسائل · الاستضافة · أي طرف ثالث.</div>
+      </div>
+    </div>
+
+    <table class="pay">
+      <thead><tr><th>المرحلة</th><th>التوقيت</th><th>المبلغ (د.ك)</th></tr></thead>
+      <tbody>
+        <tr><td>الدفعة المقدّمة</td><td>عند توقيع العقد — 50%</td><td class="amt">1,625.000</td></tr>
+        <tr><td>الدفعة النهائية</td><td>عند التسليم — 50%</td><td class="amt">1,625.000</td></tr>
+        <tr class="tot"><td>الإجمالي</td><td></td><td class="amt">3,250.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- maintenance detailed -->
+  <div class="sec">
+    <div class="amc-head">
+      <div class="l"><div class="t">تفصيل الصيانة السنوية (AMC)</div>
+        <div class="s">ماذا تشمل الـ 455 د.ك سنوياً — تبدأ بعد التسليم</div></div>
+      <div class="r"><div class="v">455 <span style="font-size:12px">د.ك</span></div><div class="u">في السنة (14%)</div></div>
+    </div>
+    <div class="amc-body">
+      <div class="amc-grid">
+        <div class="amc-item i1">
+          <div class="ico">🔄</div>
+          <div class="tx"><div class="t">النسخ الاحتياطي <span class="lat">· Backup Job</span></div>
+            <p>نسخ احتياطي دوري تلقائي (يومي) للنظام وقاعدة البيانات، مع استرجاع سريع عند الحاجة — فلا تفقدون بياناتكم مهما حدث.</p></div>
+        </div>
+        <div class="amc-item i2">
+          <div class="ico">📦</div>
+          <div class="tx"><div class="t">التحديثات المجدولة <span class="lat">· Batched Updates</span></div>
+            <p>تحسينات وإصلاحات تُجمَّع وتُنشر بشكل منظّم ومجدول دون تعطيل التشغيل — يبقى الموقع محدَّثاً ومستقراً.</p></div>
+        </div>
+        <div class="amc-item i3">
+          <div class="ico">🔐</div>
+          <div class="tx"><div class="t">التحديثات الأمنية <span class="lat">· Security Updates</span></div>
+            <p>ترقيع الثغرات وتحديث الحزم ومراقبة أمنية مستمرة لحماية الموقع وبيانات عملائكم من الاختراق.</p></div>
+        </div>
+        <div class="amc-item i4">
+          <div class="ico">🛟</div>
+          <div class="tx"><div class="t">الدعم واستمرارية الخدمة <span class="lat">· Support &amp; Uptime</span></div>
+            <p>استجابة عند تعطّل السيرفر أو أي مشكلة تشغيلية، وإعادة الخدمة للعمل بأسرع وقت — فريق متاح طوال السنة.</p></div>
+        </div>
+      </div>
+      <div class="amc-why"><b>لماذا 14%؟</b> نسبة الصيانة السنوية معيار في الصناعة، وتغطي وقت المهندسين والبنية التحتية والمراقبة على مدار السنة. كلفتها أقل بكثير من كلفة توقّف الموقع أو فقدان البيانات أو اختراق أمني واحد — فهي تأمين على استثماركم لا مصروف إضافي.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="lat">theteamkw.com</span><span>·</span><span class="lat">info@theteamkw.com</span><span>·</span><span class="lat">+965 5008008</span><span>·</span><span>Kuwait</span>
+  </div>
+</section>
+
+<!-- ================= PAGE 3 ================= -->
+<section class="page">
+  <!-- excluded + terms -->
+  <div class="sec" style="margin-top:0">
+    <div class="sec-h"><span class="dash"></span><h3>مستثنى (يُحتسب منفصلاً / على العميل)</h3></div>
+    <div class="exc">
+      <div class="chip"><b>الذكاء الاصطناعي</b> · <span class="lat">AI</span></div>
+      <div class="chip"><b>الرسائل النصية</b> · <span class="lat">SMS</span></div>
+      <div class="chip"><b>الاستضافة</b> · <span class="lat">Hosting</span></div>
+      <div class="chip"><b>أي طرف ثالث</b></div>
+    </div>
+    <div class="exc-note">تُحتسب هذه البنود بالتكلفة الفعلية ويدفعها العميل مباشرةً.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="dash"></span><h3>الشروط</h3></div>
+    <ul class="terms">
+      <li>الأسعار بالدينار الكويتي (<span class="lat">KWD</span>). هذا العرض صالح لمدة 10 أيام من تاريخه.</li>
+      <li>الدفع على دفعتين: 50% عند توقيع العقد و50% عند التسليم.</li>
+      <li>تُسدَّد الدفعات خلال 14 يوم عمل من تاريخ كل فاتورة.</li>
+      <li>تبدأ الصيانة السنوية بعد التسليم وتُحتسب سنوياً.</li>
+      <li>التكاليف المستثناة (AI، SMS، الاستضافة، أطراف ثالثة) تُحتسب بالتكلفة الفعلية ويدفعها العميل مباشرة.</li>
+    </ul>
+  </div>
+
+  <div class="sec-h"><span class="dash"></span><h3>البيانات البنكية والاعتماد</h3></div>
+  <div class="bank">
+    <div class="lbl">يُسدَّد لصالح</div>
+    <div class="co">شركة ذاتيم لإنتاج الصور المتحركة والأفلام</div>
+    <div class="co-en">THE TEAM PRODUCTION OF ANIMATION AND MOVIES</div>
+    <div class="iban">IBAN: KW16 GULB 0000 0000 0000 0094 1369 48</div>
+    <div class="draft">هذا العرض مسودة للمراجعة. يُرجى تأكيد البيانات البنكية ورقم العرض قبل الإصدار.</div>
+  </div>
+
+  <div class="accept">
+    باعتماد هذا العرض، يوافق الطرفان على نطاق العمل والاستثمار وجدول الدفعات وبنود الصيانة المذكورة أعلاه. تُفصَّل بنود التنفيذ والتسليم الكاملة في العقد المُوقّع بين الطرفين.
+  </div>
+
+  <div class="sign">
+    <div class="box"><div class="line">TheTeam — التوقيع المعتمد</div></div>
+    <div class="box"><div class="line">الصناعات الوطنية للسيراميك — اعتماد العميل</div></div>
+  </div>
+
+  <div class="foot">
+    <span class="lat">theteamkw.com</span><span>·</span><span class="lat">info@theteamkw.com</span><span>·</span><span class="lat">+965 5008008</span><span>·</span><span>Kuwait</span>
+  </div>
+</section>
+
+</body>
+</html>
