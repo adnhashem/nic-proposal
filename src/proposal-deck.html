@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>TheTeam · مقترح مشروع NI Ceramics · عرض تقديمي</title>
+<style>
+  @font-face{font-family:'Almarai';src:local('Almarai');font-weight:300}
+  :root{
+    --ink:#1b1b22; --body:#3a3c44; --muted:#8a8c95; --line:#e7e5df;
+    --card:#faf9f6; --bg:#ffffff;
+    --blue:#0a3a9e; --blue2:#2756c9;
+    --mag:#8e1a7d; --mag2:#b0248f; --purple:#6d1a6d;
+    --green:#0a7a0a; --orange:#d9650a;
+    --soft:#f7f4f8;
+  }
+  @page{size:33.867cm 19.05cm;margin:0}   /* 16:9 landscape */
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{font-family:'Almarai','Rubik',system-ui,sans-serif;color:var(--body);line-height:1.6}
+  .lat{font-family:'Rubik','Almarai',sans-serif}
+  h1,h2,h3,h4{color:var(--ink);font-weight:800;line-height:1.25}
+
+  .slide{width:33.867cm;height:19.05cm;padding:1.5cm 1.9cm 1.25cm;position:relative;overflow:hidden;
+    page-break-after:always;background:var(--bg);display:flex;flex-direction:column}
+  .slide:last-child{page-break-after:auto}
+
+  /* ---- unified brand logo (top-left on every slide) ---- */
+  .brandlogo{display:flex;align-items:center;gap:9px}
+  .brandlogo .ttmark{flex:0 0 auto}
+  .brandlogo .wm{text-align:left;line-height:.84;font-family:'Rubik','Almarai',sans-serif}
+  .brandlogo .wm .the{font-size:11px;color:#b7b7b7;font-weight:300}
+  .brandlogo .wm .team{font-size:20px;color:#9c9c9c;font-weight:300}
+
+  /* ---- shared slide chrome ---- */
+  .s-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .s-eyebrow{display:flex;align-items:center;gap:10px}
+  .s-eyebrow .dash{width:30px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--mag),var(--orange))}
+  .s-eyebrow .num{font-family:'Rubik';font-size:13px;font-weight:800;color:var(--mag);letter-spacing:1px}
+  .s-eyebrow .lbl{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:1px}
+  .s-title{font-size:34px;font-weight:800;color:var(--ink);margin-top:2px;line-height:1.2}
+  .s-sub{font-size:15px;color:var(--muted);margin-top:6px}
+  .s-foot{position:absolute;bottom:.85cm;left:1.9cm;right:1.9cm;display:flex;justify-content:space-between;
+    align-items:center;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+  .s-foot .lat{font-family:'Rubik'}
+  .s-foot .pg{font-family:'Rubik';font-weight:700;color:var(--mag)}
+  .body{flex:1;min-height:0}
+
+  /* ================= COVER (white) ================= */
+  .cover{background:#fff;color:var(--ink);justify-content:center}
+  .cover .c-top{position:absolute;top:1.5cm;right:1.9cm;left:1.9cm;display:flex;justify-content:space-between;align-items:center}
+  .cover .meta-r{font-size:12.5px;color:var(--muted);text-align:right;line-height:1.9}
+  .cover .meta-r b{color:var(--body);font-weight:700}
+  .cover .c-body{position:relative;z-index:2;max-width:90%}
+  .cover .eyebrow-row{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:800;letter-spacing:2px;color:var(--mag)}
+  .cover .eyebrow-row .dash{width:34px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--mag),var(--orange))}
+  .cover h1{font-size:66px;font-weight:800;color:var(--ink);line-height:1.05;margin:16px 0 14px}
+  .cover .client{font-size:22px;color:var(--purple);font-weight:700}
+  .cover .client .lat{color:var(--ink)}
+  .cover .tagline{font-size:18px;color:var(--body);line-height:1.7;margin-top:18px;max-width:82%;font-weight:400}
+  .cover .tagline b{color:var(--mag);font-weight:800}
+  .cover .pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .cover .pill{border:1.5px solid var(--line);background:var(--soft);border-radius:24px;padding:9px 18px;font-size:14px;color:var(--purple);font-weight:800}
+  .cover .c-foot{position:absolute;bottom:1.15cm;right:1.9cm;left:1.9cm;display:flex;justify-content:space-between;
+    font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+  .cover .c-foot .lat{font-family:'Rubik'}
+
+  /* ================= VISION ================= */
+  .vision .v-wrap{display:flex;flex-direction:column;justify-content:center;height:100%;gap:26px}
+  .vision .v-statement{font-size:44px;font-weight:800;color:var(--ink);line-height:1.32;max-width:94%}
+  .vision .v-statement .hl{color:var(--mag)}
+  .vision .v-lead{font-size:17px;color:var(--body);line-height:1.75;max-width:82%}
+  .vision .pills{display:flex;gap:12px;flex-wrap:wrap}
+  .vision .pill{border:1.5px solid var(--line);background:var(--soft);border-radius:24px;padding:10px 20px;
+    font-size:15px;color:var(--purple);font-weight:800}
+
+  /* ================= generic cards ================= */
+  .cards{display:grid;gap:16px;height:100%}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .card .ct{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .card .ct .ic{width:11px;height:11px;border-radius:3px;flex:0 0 auto;background:var(--mag)}
+  .card.b .ct .ic{background:var(--blue)} .card.g .ct .ic{background:var(--green)}
+  .card.o .ct .ic{background:var(--orange)} .card.p .ct .ic{background:var(--purple)}
+  .card p{font-size:14px;color:var(--body);line-height:1.65}
+  .card p .lat{color:var(--blue);font-weight:700}
+  .bg-grid{grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr}
+
+  /* ================= roadmap horizontal ================= */
+  .road{display:flex;height:100%;align-items:stretch;position:relative;padding-top:26px}
+  .road::before{content:"";position:absolute;top:34px;right:2%;left:2%;height:3px;background:var(--line);border-radius:2px}
+  .rp{flex:1;position:relative;padding:0 16px}
+  .rp .dot{position:absolute;top:26px;right:50%;transform:translateX(50%);width:20px;height:20px;border-radius:50%;
+    background:#fff;border:4px solid var(--mag);box-sizing:border-box}
+  .rp.done .dot{background:var(--green);border-color:var(--green)}
+  .rp.now .dot{border-color:var(--blue)}
+  .rp.now .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--blue)}
+  .rp .rc{margin-top:64px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;height:calc(100% - 64px)}
+  .rp .stg{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.5px}
+  .rp .nm{font-size:17px;font-weight:800;color:var(--ink);margin:4px 0 8px}
+  .rp .tag{display:inline-block;font-size:11px;font-weight:800;padding:3px 11px;border-radius:20px;margin-bottom:9px}
+  .rp .tag.t-done{background:#eaf5ea;color:var(--green)}
+  .rp .tag.t-now{background:#e9eefb;color:var(--blue)}
+  .rp .tag.t-next{background:#f4eef4;color:var(--purple)}
+  .rp p{font-size:12.5px;color:var(--body);line-height:1.6}
+  .rp p .lat{color:var(--blue);font-weight:700}
+
+  /* ================= scope 3 cols ================= */
+  .scope3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;height:100%}
+  .sc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+  .sc .n{font-family:'Rubik';font-size:15px;font-weight:800;color:#fff;background:var(--ink);width:38px;height:38px;
+    border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .sc h3{font-size:20px;margin:16px 0 4px}
+  .sc .en{font-size:13px;color:var(--blue);font-weight:700;font-family:'Rubik'}
+  .sc p{font-size:14px;color:var(--body);line-height:1.65;margin-top:10px;flex:1}
+  .sc .pill{align-self:flex-start;background:#eaf5ea;color:var(--green);font-weight:800;font-size:13px;
+    padding:5px 15px;border-radius:20px;margin-top:12px}
+
+  /* ================= investment ================= */
+  .invest{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;height:100%}
+  .price-main{background:linear-gradient(135deg,#2a0f28,#5a1550);color:#fff;border-radius:18px;padding:32px 34px;
+    display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .price-main::after{content:"";position:absolute;left:-60px;bottom:-90px;width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(176,36,143,.45),transparent 70%)}
+  .price-main .r{display:flex;justify-content:space-between;font-size:16px;color:#e9d9e6;padding:7px 0}
+  .price-main .r .lat{font-weight:700}
+  .price-main hr{border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0}
+  .price-main .tk{font-size:17px;font-weight:800;color:#fff}
+  .price-main .tv{font-size:60px;font-weight:800;color:#ffd9f4;font-family:'Rubik';line-height:1;margin-top:6px}
+  .price-main .tv small{font-size:22px}
+  .price-main .note{font-size:13px;color:#d9b9d4;margin-top:12px;position:relative;z-index:2}
+  .inv-right{display:flex;flex-direction:column;gap:16px}
+  .pay{width:100%;border-collapse:collapse;font-size:15px}
+  .pay th{background:var(--soft);color:var(--ink);font-weight:800;font-size:13.5px;padding:12px 14px;text-align:right;border-bottom:2px solid #ecdcea}
+  .pay th:last-child{text-align:left}
+  .pay td{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .pay .amt{font-family:'Rubik';font-weight:700;text-align:left;color:var(--ink)}
+  .pay tr.tot td{background:#fbf6fa;font-weight:800;border-bottom:none}
+  .pay tr.tot .amt{color:var(--mag)}
+  .amc-side{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+  .amc-side .k{font-size:14px;color:var(--muted);font-weight:700}
+  .amc-side .v{font-size:30px;font-weight:800;color:var(--ink);font-family:'Rubik';margin-top:2px}
+  .amc-side .v small{font-size:15px;color:var(--body)}
+  .amc-side .x{font-size:12.5px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+
+  /* ================= maintenance ================= */
+  .amc-hero{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0a3a9e,#2756c9);
+    color:#fff;border-radius:16px;padding:20px 26px;margin-bottom:18px}
+  .amc-hero .t{font-size:22px;font-weight:800;color:#fff}
+  .amc-hero .s{font-size:14px;color:#cdd9f3;margin-top:3px}
+  .amc-hero .v{font-size:40px;font-weight:800;font-family:'Rubik';color:#fff;line-height:1;text-align:left}
+  .amc-hero .v small{font-size:16px;color:#cdd9f3;display:block;font-family:'Almarai';font-weight:400}
+  .amc4{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ai{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .ai .ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+  .ai.i1 .ico{background:#e9eefb} .ai.i2 .ico{background:#eaf5ea} .ai.i3 .ico{background:#fbeaf6} .ai.i4 .ico{background:#fdeede}
+  .ai .t{font-size:16px;font-weight:800;color:var(--ink)}
+  .ai .t .lat{font-size:12px;color:var(--muted);font-weight:600}
+  .ai p{font-size:13px;color:var(--body);line-height:1.55;margin-top:2px}
+  .amc-why{margin-top:16px;font-size:13.5px;color:var(--body);line-height:1.65;background:var(--soft);
+    border:1px solid #ecdcea;border-radius:12px;padding:14px 18px}
+  .amc-why b{color:var(--purple)}
+
+  /* ================= close ================= */
+  .close{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;height:100%}
+  .close .terms{list-style:none}
+  .close .terms li{font-size:14px;color:var(--body);line-height:1.5;margin-bottom:11px;position:relative;padding-right:18px}
+  .close .terms li::before{content:"•";position:absolute;right:0;color:var(--mag);font-weight:800;font-size:16px}
+  .exc{display:flex;flex-wrap:wrap;gap:9px;margin:6px 0 18px}
+  .exc .chip{border:1px solid var(--line);border-radius:20px;padding:6px 15px;font-size:13px;color:var(--body);background:#fff}
+  .exc .chip b{color:var(--ink)}
+  .close .r-col{display:flex;flex-direction:column;justify-content:flex-start;gap:26px}
+  .accept{background:var(--soft);border:1px solid #ecdcea;border-radius:16px;padding:20px 22px;font-size:14.5px;
+    color:var(--body);line-height:1.7}
+  .accept b{color:var(--ink)}
+  .sign{display:flex;gap:30px;margin-top:6px}
+  .sign .bx{flex:1;text-align:center}
+  .sign .ln{border-top:2px solid var(--ink);padding-top:10px;font-size:14px;color:var(--body);font-weight:700}
+  .sub-h{font-size:14px;font-weight:800;color:var(--muted);letter-spacing:.5px;margin:2px 0 10px}
+</style>
+</head>
+<body>
+
+<!-- ============ 1 · COVER (white) ============ -->
+<section class="slide cover">
+  <div class="c-top">
+    <div class="meta-r"><b>المرجع:</b> <span class="lat">TTM-NICE-002</span><br><b>التاريخ:</b> 6 يوليو 2026 · صالح 10 أيام</div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="52" height="52" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+
+  <div class="c-body">
+    <div class="eyebrow-row"><span class="dash"></span><span>TheTeam · مقترح مشروع</span></div>
+    <h1>مقترح مشروع</h1>
+    <div class="client">الصناعات الوطنية للسيراميك <span class="lat">NI Ceramics</span></div>
+    <div class="tagline">من موقع تعريفي إلى <b>منصّة رقمية</b> تُرسّخ مكانتكم في السيراميك الفاخر: موقع حديث، تحكّم كامل، وأداة ذكاء اصطناعي حصرية.</div>
+    <div class="pills">
+      <span class="pill">طبقتان · قابل للتطوير</span>
+      <span class="pill">تحكّم كامل بلا مطوّر</span>
+      <span class="pill">أداة ذكاء اصطناعي حصرية</span>
+      <span class="pill">عربي / إنجليزي</span>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span>الموقع · نظام إدارة المحتوى (CMS) · موصّل الذكاء الاصطناعي (AI MCP)</span>
+    <span class="lat" dir="ltr">theteamkw.com · +965 50080098</span>
+  </div>
+</section>
+
+<!-- ============ 2 · VISION ============ -->
+<section class="slide vision">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">01</span><span class="lbl">الرؤية</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="v-wrap">
+      <div class="v-statement">من موقع تعريفي إلى <span class="hl">منصّة رقمية</span> تقود فئة السيراميك الفاخر في الكويت.</div>
+      <div class="v-lead">يترجم هذا المقترح ما ناقشناه في اجتماعنا إلى خطة تنفيذ واضحة: نظام حديث بطبقتين تتحكّمون فيه بأنفسكم، كتالوج فخم بلا بيع مباشر، وأداة ذكاء اصطناعي تحسب الكميات والتكلفة من مخطط البيت، ميزة لا يملكها منافسوكم اليوم. نبدأ بالتصميم ثم نبني بنطاق مركّز يتوسّع تدريجياً.</div>
+      <div class="pills">
+        <span class="pill">طبقتان · قابل للتطوير</span>
+        <span class="pill">تحكّم كامل بلا مطوّر</span>
+        <span class="pill">أداة ذكاء اصطناعي حصرية</span>
+        <span class="pill">عربي / إنجليزي</span>
+      </div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">02 / 08</span></div>
+</section>
+
+<!-- ============ 3 · BACKGROUND ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">02</span><span class="lbl">خلفية المشروع</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <h2 class="s-title">ما ناقشناه، وكيف نعالجه</h2>
+  <div class="body" style="margin-top:16px">
+    <div class="cards bg-grid">
+      <div class="card b"><div class="ct"><span class="ic"></span>الوضع الحالي: نظام مقفل</div>
+        <p>نظامكم الحالي كتلة واحدة، أي تعديل في الواجهة يمسّ النواة، وإدارة الـIT عنق زجاجة يبطّئ أي تغيير.</p></div>
+      <div class="card"><div class="ct"><span class="ic"></span>الحل: فصل الواجهة عن النواة</div>
+        <p>نعيد البناء بطبقتين (واجهة <span class="lat">React</span> + نواة مستقلة)، فتُعدّلون بحرّية دون لمس النواة.</p></div>
+      <div class="card g"><div class="ct"><span class="ic"></span>التحكم بلا مطوّر</div>
+        <p>لوحة تحكم كاملة بصلاحيات تُدير الصفحات والمنتجات والصور والأخبار، وتوزّع العمل على الفريق.</p></div>
+      <div class="card o"><div class="ct"><span class="ic"></span>ميزة لا يملكها المنافس</div>
+        <p>كتالوج فخم بلا بيع مباشر + أداة ذكاء اصطناعي ترفع مخطط البيت (<span class="lat">PDF</span>) وتحسب الكميات والتكلفة.</p></div>
+      <div class="card p" style="grid-column:span 2"><div class="ct"><span class="ic"></span>حساسية السوق: جودة تُعرَض بثقة</div>
+        <p>ناقشنا حساسية السعر لدى المستهلك الكويتي والفروق بين المنشأ الصيني والإيطالي والهندي وتصنيف الجودة (<span class="lat">Class A/B/C</span>). المنصّة تُبرز جودتكم ومصداقيتكم، لا تنافس على السعر بل على الثقة والتجربة والفخامة، كما تفعل كبرى علامات السيراميك عالمياً.</p></div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">03 / 08</span></div>
+</section>
+
+<!-- ============ 4 · ROADMAP ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">03</span><span class="lbl">خارطة الطريق</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <h2 class="s-title">كيف نبنيها: مسار على مراحل</h2>
+  <div class="s-sub" style="margin-bottom:6px">استثمار هذا المقترح يغطّي المرحلتين ١ و٢ بالكامل.</div>
+  <div class="body">
+    <div class="road">
+      <div class="rp done"><span class="dot"></span><div class="rc">
+        <div class="stg">المرحلة ٠</div><div class="nm">التصميم والهوية</div>
+        <span class="tag t-done">مُنجَز</span>
+        <p>٣ اتجاهات هوية بصرية كاملة، ٩ شاشات لكل هوية، جاهزة لاختياركم قبل صرف أي مبلغ على البناء.</p></div></div>
+      <div class="rp now"><span class="dot"></span><div class="rc">
+        <div class="stg">المرحلة ١</div><div class="nm">البناء الأساسي</div>
+        <span class="tag t-now">ضمن الاستثمار</span>
+        <p>الموقع ثنائي اللغة بطبقتين (<span class="lat">React</span> + نواة مستقلة) + نظام إدارة محتوى كامل.</p></div></div>
+      <div class="rp now"><span class="dot"></span><div class="rc">
+        <div class="stg">المرحلة ٢</div><div class="nm">الذكاء الاصطناعي</div>
+        <span class="tag t-now">ضمن الاستثمار</span>
+        <p>أداة تقدير الكميات والتكلفة من المخطط، وموصّل <span class="lat">MCP</span> لتشغيل النظام بالذكاء الاصطناعي.</p></div></div>
+      <div class="rp"><span class="dot"></span><div class="rc">
+        <div class="stg">المرحلة ٣</div><div class="nm">التوسّع</div>
+        <span class="tag t-next">مستقبلاً</span>
+        <p>أدوات ذكاء اصطناعي إضافية ووحدات جديدة، تُسعَّر منفصلة عند الحاجة، والبنية تجعلها إضافة سهلة.</p></div></div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">04 / 08</span></div>
+</section>
+
+<!-- ============ 5 · SCOPE ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">04</span><span class="lbl">نطاق العمل</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <h2 class="s-title">ثلاثة أنظمة متكاملة</h2>
+  <div class="body" style="margin-top:16px">
+    <div class="scope3">
+      <div class="sc"><div class="n">1</div><h3>الموقع الإلكتروني</h3><div class="en">Website</div>
+        <p>موقع تعريفي وتجاري ثنائي اللغة يعرض منتجات السيراميك والبورسلين والمجموعات، قابل للتهيئة بالكامل من قِبل الفريق (المحتوى، الصور، الألوان).</p>
+        <span class="pill">مشمول</span></div>
+      <div class="sc"><div class="n">2</div><h3>نظام إدارة المحتوى</h3><div class="en">CMS</div>
+        <p>لوحة تحكم كاملة لإدارة الصفحات والمنتجات والصور والأقسام والأخبار دون الحاجة إلى مطوّر.</p>
+        <span class="pill">مشمول</span></div>
+      <div class="sc"><div class="n">3</div><h3>موصّل الذكاء الاصطناعي</h3><div class="en">AI MCP Connector</div>
+        <p>مساعد ذكاء اصطناعي + موصّل <span class="lat">MCP</span> لتشغيل النظام والاستعلام عنه، وأداة تقدير الكميات والتكلفة من المخطط (محكوم بالصلاحيات وموثّق).</p>
+        <span class="pill">مشمول</span></div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">05 / 08</span></div>
+</section>
+
+<!-- ============ 6 · INVESTMENT ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">05</span><span class="lbl">الاستثمار</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <h2 class="s-title">الاستثمار وجدول الدفعات</h2>
+  <div class="body" style="margin-top:16px">
+    <div class="invest">
+      <div class="price-main">
+        <div class="r"><span>الموقع الإلكتروني</span><span class="lat">مشمول</span></div>
+        <div class="r"><span>نظام إدارة المحتوى (CMS)</span><span class="lat">مشمول</span></div>
+        <div class="r"><span>موصّل الذكاء الاصطناعي (AI MCP)</span><span class="lat">مشمول</span></div>
+        <hr>
+        <div class="tk">إجمالي تكلفة المشروع</div>
+        <div class="tv">2,750 <small>د.ك</small></div>
+        <div class="note">بناء كامل للأنظمة الثلاثة (المرحلتان ١ و٢) · دفعة واحدة على مرحلتين.</div>
+      </div>
+      <div class="inv-right">
+        <table class="pay">
+          <thead><tr><th>المرحلة</th><th>التوقيت</th><th>المبلغ (د.ك)</th></tr></thead>
+          <tbody>
+            <tr><td>الدفعة المقدّمة</td><td>توقيع العقد · 50%</td><td class="amt">1,375.000</td></tr>
+            <tr><td>الدفعة النهائية</td><td>عند التسليم · 50%</td><td class="amt">1,375.000</td></tr>
+            <tr class="tot"><td>الإجمالي</td><td></td><td class="amt">2,750.000</td></tr>
+          </tbody>
+        </table>
+        <div class="amc-side">
+          <div class="k">الصيانة السنوية (AMC)</div>
+          <div class="v">480 <small>د.ك / سنة</small></div>
+          <div class="x">مُستثنى ويدفعه العميل بالتكلفة الفعلية: الذكاء الاصطناعي · الرسائل · الاستضافة · أي طرف ثالث.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">06 / 08</span></div>
+</section>
+
+<!-- ============ 7 · MAINTENANCE ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">06</span><span class="lbl">الصيانة السنوية</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="amc-hero">
+      <div><div class="t">ماذا تشمل الصيانة السنوية؟</div><div class="s">تبدأ بعد التسليم · تحمي استثماركم طوال السنة</div></div>
+      <div class="v">480 <small>د.ك في السنة</small></div>
+    </div>
+    <div class="amc4">
+      <div class="ai i1"><div class="ico">🔄</div><div><div class="t">النسخ الاحتياطي <span class="lat">· Backup</span></div>
+        <p>نسخ احتياطي يومي تلقائي للنظام وقاعدة البيانات مع استرجاع سريع، فلا تفقدون بياناتكم مهما حدث.</p></div></div>
+      <div class="ai i2"><div class="ico">📦</div><div><div class="t">التحديثات المجدولة <span class="lat">· Updates</span></div>
+        <p>تحسينات وإصلاحات تُجمَّع وتُنشر بشكل منظّم دون تعطيل التشغيل، فيبقى الموقع محدَّثاً ومستقراً.</p></div></div>
+      <div class="ai i3"><div class="ico">🔐</div><div><div class="t">التحديثات الأمنية <span class="lat">· Security</span></div>
+        <p>ترقيع الثغرات وتحديث الحزم ومراقبة أمنية مستمرة لحماية الموقع وبيانات عملائكم.</p></div></div>
+      <div class="ai i4"><div class="ico">🛟</div><div><div class="t">الدعم واستمرارية الخدمة <span class="lat">· Uptime</span></div>
+        <p>استجابة عند تعطّل السيرفر أو أي مشكلة تشغيلية وإعادة الخدمة بأسرع وقت، وفريق متاح طوال السنة.</p></div></div>
+    </div>
+    <div class="amc-why"><b>لماذا 480 د.ك سنوياً؟</b> يغطّي وقت المهندسين والمراقبة المستمرة والبنية اللازمة للنسخ والأمان، وهو ضمن المعيار الصناعي (10% إلى 18% من قيمة المشروع). كلفته أقل بكثير من كلفة توقّف يوم واحد أو فقدان بيانات أو اختراق أمني، فهو تأمين على استثماركم لا مصروف إضافي.</div>
+  </div>
+  <div class="s-foot"><span class="lat">theteamkw.com</span><span class="pg" dir="ltr">07 / 08</span></div>
+</section>
+
+<!-- ============ 8 · CLOSE ============ -->
+<section class="slide">
+  <div class="s-head">
+    <div class="s-eyebrow"><span class="dash"></span><span class="num">07</span><span class="lbl">الشروط والاعتماد</span></div>
+    <div class="brandlogo">
+      <svg class="ttmark" width="40" height="40" viewBox="0 0 104 104" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,4)" stroke="#D9650A"><circle cx="12" cy="11" r="6"/><circle cx="29" cy="11" r="6"/><rect x="4" y="19" width="30" height="20" rx="3"/><path d="M34 24 L44 19 L44 39 L34 34 Z"/></g>
+        <g transform="translate(58,4)" stroke="#990099"><rect x="13" y="1" width="14" height="27" rx="7"/><path d="M5 19 A15 15 0 0 0 35 19"/><line x1="20" y1="34" x2="20" y2="42"/><line x1="12" y1="42" x2="28" y2="42"/></g>
+        <g transform="translate(2,58)" stroke="#0A3A9E"><rect x="3" y="2" width="36" height="27" rx="4"/><path d="M11 40 L21 33 L31 40"/><line x1="11" y1="40" x2="31" y2="40"/></g>
+        <g transform="translate(58,58)" stroke="#0A7A0A"><rect x="13" y="3" width="13" height="8" rx="1.5"/><rect x="3" y="10" width="36" height="28" rx="4"/><circle cx="21" cy="25" r="8"/></g>
+      </svg>
+      <div class="wm"><div class="the">The</div><div class="team lat">Team</div></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="close">
+      <div class="l-col">
+        <div class="sub-h">الشروط</div>
+        <ul class="terms">
+          <li>الأسعار بالدينار الكويتي (<span class="lat">KWD</span>). المقترح صالح 10 أيام من تاريخه.</li>
+          <li>الدفع على دفعتين: 50% عند توقيع العقد و50% عند التسليم.</li>
+          <li>تُسدَّد الدفعات خلال 14 يوم عمل من تاريخ كل فاتورة.</li>
+          <li>تبدأ الصيانة السنوية بعد التسليم وتُحتسب سنوياً.</li>
+          <li>تُفصَّل بنود التنفيذ والتسليم والجداول الكاملة في العقد المُوقّع.</li>
+        </ul>
+        <div class="sub-h" style="margin-top:18px">مُستثنى (على العميل بالتكلفة الفعلية)</div>
+        <div class="exc">
+          <div class="chip"><b>الذكاء الاصطناعي</b> · <span class="lat">AI</span></div>
+          <div class="chip"><b>الرسائل</b> · <span class="lat">SMS</span></div>
+          <div class="chip"><b>الاستضافة</b> · <span class="lat">Hosting</span></div>
+          <div class="chip"><b>أي طرف ثالث</b></div>
+        </div>
+      </div>
+      <div class="r-col">
+        <div class="accept">
+          باعتماد هذا المقترح، يوافق الطرفان على نطاق العمل والاستثمار وجدول الدفعات وبنود الصيانة أعلاه بصفتها إطاراً للاتفاق. تُفصَّل بنود التنفيذ الكاملة في العقد المُوقّع بين الطرفين. <b>البيانات البنكية تُؤكَّد في الفاتورة الرسمية عند التوقيع.</b>
+        </div>
+        <div class="sign">
+          <div class="bx"><div class="ln">TheTeam · التوقيع المعتمد</div></div>
+          <div class="bx"><div class="ln">NI Ceramics · اعتماد العميل</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="lat" dir="ltr">theteamkw.com · info@theteamkw.com · +965 50080098</span><span class="pg" dir="ltr">08 / 08</span></div>
+</section>
+
+</body>
+</html>
